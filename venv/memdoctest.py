@@ -41,6 +41,13 @@ SEGMENTE_DICT = {
     "C0-C5": "C0, C1, C2, C3, C4, C5",
     "C0-C6": "C0, C1, C2, C3, C4, C5, C6",
     "C0-C7": "C0, C1, C2, C3, C4, C5, C6, C7",
+    "C0-1": "C0, C1",
+    "C0-2": "C0, C1, C2",
+    "C0-3": "C0, C1, C2, C3",
+    "C0-4": "C0, C1, C2, C3, C4",
+    "C0-5": "C0, C1, C2, C3, C4, C5",
+    "C0-6": "C0, C1, C2, C3, C4, C5, C6",
+    "C0-7": "C0, C1, C2, C3, C4, C5, C6, C7",
     "C0-T1": "C0, C1, C2, C3, C4, C5, C6, C7, T1",
     "C0-T2": "C0, C1, C2, C3, C4, C5, C6, C7, T1, T2",
     "C0-T3": "C0, C1, C2, C3, C4, C5, C6, C7, T1, T2, T3",
@@ -70,6 +77,12 @@ SEGMENTE_DICT = {
     "C1-C5": "C1, C2, C3, C4, C5",
     "C1-C6": "C1, C2, C3, C4, C5, C6",
     "C1-C7": "C1, C2, C3, C4, C5, C6, C7",
+    "C1-2": "C1, C2",
+    "C1-3": "C1, C2, C3",
+    "C1-4": "C1, C2, C3, C4",
+    "C1-5": "C1, C2, C3, C4, C5",
+    "C1-6": "C1, C2, C3, C4, C5, C6",
+    "C1-7": "C1, C2, C3, C4, C5, C6, C7",
     "C1-T1": "C1, C2, C3, C4, C5, C6, C7, T1",
     "C1-T2": "C1, C2, C3, C4, C5, C6, C7, T1, T2",
     "C1-T3": "C1, C2, C3, C4, C5, C6, C7, T1, T2, T3",
@@ -97,6 +110,11 @@ SEGMENTE_DICT = {
     "C2-C5": "C2, C3, C4, C5",
     "C2-C6": "C2, C3, C4, C5, C6",
     "C2-C7": "C2, C3, C4, C5, C6, C7",
+    "C2-3": "C2, C3",
+    "C2-4": "C2, C3, C4",
+    "C2-5": "C2, C3, C4, C5",
+    "C2-6": "C2, C3, C4, C5, C6",
+    "C2-7": "C2, C3, C4, C5, C6, C7",
     "C2-T1": "C2, C3, C4, C5, C6, C7, T1",
     "C2-T2": "C2, C3, C4, C5, C6, C7, T1, T2",
     "C2-T3": "C2, C3, C4, C5, C6, C7, T1, T2, T3",
@@ -123,6 +141,10 @@ SEGMENTE_DICT = {
     "C3-C5": "C3, C4, C5",
     "C3-C6": "C3, C4, C5, C6",
     "C3-C7": "C3, C4, C5, C6, C7",
+    "C3-4": "C3, C4",
+    "C3-5": "C3, C4, C5",
+    "C3-6": "C3, C4, C5, C6",
+    "C3-7": "C3, C4, C5, C6, C7",
     "C3-T1": "C3, C4, C5, C6, C7, T1",
     "C3-T2": "C3, C4, C5, C6, C7, T1, T2",
     "C3-T3": "C3, C4, C5, C6, C7, T1, T2, T3",
@@ -148,6 +170,9 @@ SEGMENTE_DICT = {
     "C4-C5": "C4, C5",
     "C4-C6": "C4, C5, C6",
     "C4-C7": "C4, C5, C6, C7",
+    "C4-5": "C4, C5",
+    "C4-6": "C4, C5, C6",
+    "C4-7": "C4, C5, C6, C7",
     "C4-T1": "C4, C5, C6, C7, T1",
     "C4-T2": "C4, C5, C6, C7, T1, T2",
     "C4-T3": "C4, C5, C6, C7, T1, T2, T3",
@@ -170,7 +195,10 @@ SEGMENTE_DICT = {
     "C4-X": "C4, C5, C6, C7, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1, L2, L3, L4, L5, S1, S2, X",
     "C4-I": "C4, C5, C6, C7, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1, L2, L3, L4, L5, S1, S2, X, I",
 
+    "C5-C6": "C5, C6",
     "C5-C7": "C5, C6, C7",
+    "C5-6": "C5, C6",
+    "C5-7": "C5, C6, C7",
     "C5-T1": "C5, C6, C7, T1",
     "C5-T2": "C5, C6, C7, T1, T2",
     "C5-T3": "C5, C6, C7, T1, T2, T3",
@@ -193,6 +221,8 @@ SEGMENTE_DICT = {
     "C5-X": "C5, C6, C7, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1, L2, L3, L4, L5, S1, S2, X",
     "C5-I": "C5, C6, C7, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1, L2, L3, L4, L5, S1, S2, X, I",
 
+    "C6-C7": "C6, C7",
+    "C6-7": "C6, C7",
     "C6-T1": "C6, C7, T1",
     "C6-T2": "C6, C7, T1, T2",
     "C6-T3": "C6, C7, T1, T2, T3",
@@ -248,6 +278,17 @@ SEGMENTE_DICT = {
     "T1-T10": "T1, T2, T3, T4, T5, T6, T7, T8, T9, T10",
     "T1-T11": "T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11",
     "T1-T12": "T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12",
+    "T1-2": "T1, T2",
+    "T1-3": "T1, T2, T3",
+    "T1-4": "T1, T2, T3, T4",
+    "T1-5": "T1, T2, T3, T4, T5",
+    "T1-6": "T1, T2, T3, T4, T5, T6",
+    "T1-7": "T1, T2, T3, T4, T5, T6, T7",
+    "T1-8": "T1, T2, T3, T4, T5, T6, T7, T8",
+    "T1-9": "T1, T2, T3, T4, T5, T6, T7, T8, T9",
+    "T1-10": "T1, T2, T3, T4, T5, T6, T7, T8, T9, T10",
+    "T1-11": "T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11",
+    "T1-12": "T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12",
     "T1-L1": "T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1",
     "T1-L2": "T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1, L2",
     "T1-L3": "T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1, L2, L3",
@@ -268,6 +309,16 @@ SEGMENTE_DICT = {
     "T2-T10": "T2, T3, T4, T5, T6, T7, T8, T9, T10",
     "T2-T11": "T2, T3, T4, T5, T6, T7, T8, T9, T10, T11",
     "T2-T12": "T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12",
+    "T2-3": "T2, T3",
+    "T2-4": "T2, T3, T4",
+    "T2-5": "T2, T3, T4, T5",
+    "T2-6": "T2, T3, T4, T5, T6",
+    "T2-7": "T2, T3, T4, T5, T6, T7",
+    "T2-8": "T2, T3, T4, T5, T6, T7, T8",
+    "T2-9": "T2, T3, T4, T5, T6, T7, T8, T9",
+    "T2-10": "T2, T3, T4, T5, T6, T7, T8, T9, T10",
+    "T2-11": "T2, T3, T4, T5, T6, T7, T8, T9, T10, T11",
+    "T2-12": "T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12",
     "T2-L1": "T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1",
     "T2-L2": "T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1, L2",
     "T2-L3": "T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1, L2, L3",
@@ -287,6 +338,15 @@ SEGMENTE_DICT = {
     "T3-T10": "T3, T4, T5, T6, T7, T8, T9, T10",
     "T3-T11": "T3, T4, T5, T6, T7, T8, T9, T10, T11",
     "T3-T12": "T3, T4, T5, T6, T7, T8, T9, T10, T11, T12",
+    "T3-4": "T3, T4",
+    "T3-5": "T3, T4, T5",
+    "T3-6": "T3, T4, T5, T6",
+    "T3-7": "T3, T4, T5, T6, T7",
+    "T3-8": "T3, T4, T5, T6, T7, T8",
+    "T3-9": "T3, T4, T5, T6, T7, T8, T9",
+    "T3-10": "T3, T4, T5, T6, T7, T8, T9, T10",
+    "T3-11": "T3, T4, T5, T6, T7, T8, T9, T10, T11",
+    "T3-12": "T3, T4, T5, T6, T7, T8, T9, T10, T11, T12",
     "T3-L1": "T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1",
     "T3-L2": "T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1, L2",
     "T3-L3": "T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, L1, L2, L3",
@@ -305,6 +365,14 @@ SEGMENTE_DICT = {
     "T4-T10": "T4, T5, T6, T7, T8, T9, T10",
     "T4-T11": "T4, T5, T6, T7, T8, T9, T10, T11",
     "T4-T12": "T4, T5, T6, T7, T8, T9, T10, T11, T12",
+    "T4-5": "T4, T5",
+    "T4-6": "T4, T5, T6",
+    "T4-7": "T4, T5, T6, T7",
+    "T4-8": "T4, T5, T6, T7, T8",
+    "T4-9": "T4, T5, T6, T7, T8, T9",
+    "T4-10": "T4, T5, T6, T7, T8, T9, T10",
+    "T4-11": "T4, T5, T6, T7, T8, T9, T10, T11",
+    "T4-12": "T4, T5, T6, T7, T8, T9, T10, T11, T12",
     "T4-L1": "T4, T5, T6, T7, T8, T9, T10, T11, T12, L1",
     "T4-L2": "T4, T5, T6, T7, T8, T9, T10, T11, T12, L1, L2",
     "T4-L3": "T4, T5, T6, T7, T8, T9, T10, T11, T12, L1, L2, L3",
@@ -322,6 +390,13 @@ SEGMENTE_DICT = {
     "T5-T10": "T5, T6, T7, T8, T9, T10",
     "T5-T11": "T5, T6, T7, T8, T9, T10, T11",
     "T5-T12": "T5, T6, T7, T8, T9, T10, T11, T12",
+    "T5-6": "T5, T6",
+    "T5-7": "T5, T6, T7",
+    "T5-8": "T5, T6, T7, T8",
+    "T5-9": "T5, T6, T7, T8, T9",
+    "T5-10": "T5, T6, T7, T8, T9, T10",
+    "T5-11": "T5, T6, T7, T8, T9, T10, T11",
+    "T5-12": "T5, T6, T7, T8, T9, T10, T11, T12",
     "T5-L1": "T5, T6, T7, T8, T9, T10, T11, T12, L1",
     "T5-L2": "T5, T6, T7, T8, T9, T10, T11, T12, L1, L2",
     "T5-L3": "T5, T6, T7, T8, T9, T10, T11, T12, L1, L2, L3",
@@ -338,6 +413,12 @@ SEGMENTE_DICT = {
     "T6-T10": "T6, T7, T8, T9, T10",
     "T6-T11": "T6, T7, T8, T9, T10, T11",
     "T6-T12": "T6, T7, T8, T9, T10, T11, T12",
+    "T6-7": "T6, T7",
+    "T6-8": "T6, T7, T8",
+    "T6-9": "T6, T7, T8, T9",
+    "T6-10": "T6, T7, T8, T9, T10",
+    "T6-11": "T6, T7, T8, T9, T10, T11",
+    "T6-12": "T6, T7, T8, T9, T10, T11, T12",
     "T6-L1": "T6, T7, T8, T9, T10, T11, T12, L1",
     "T6-L2": "T6, T7, T8, T9, T10, T11, T12, L1, L2",
     "T6-L3": "T6, T7, T8, T9, T10, T11, T12, L1, L2, L3",
@@ -353,6 +434,11 @@ SEGMENTE_DICT = {
     "T7-T10": "T7, T8, T9, T10",
     "T7-T11": "T7, T8, T9, T10, T11",
     "T7-T12": "T7, T8, T9, T10, T11, T12",
+    "T7-8": "T7, T8",
+    "T7-9": "T7, T8, T9",
+    "T7-10": "T7, T8, T9, T10",
+    "T7-11": "T7, T8, T9, T10, T11",
+    "T7-12": "T7, T8, T9, T10, T11, T12",
     "T7-L1": "T7, T8, T9, T10, T11, T12, L1",
     "T7-L2": "T7, T8, T9, T10, T11, T12, L1, L2",
     "T7-L3": "T7, T8, T9, T10, T11, T12, L1, L2, L3",
@@ -367,6 +453,10 @@ SEGMENTE_DICT = {
     "T8-T10": "T8, T9, T10",
     "T8-T11": "T8, T9, T10, T11",
     "T8-T12": "T8, T9, T10, T11, T12",
+    "T8-9": "T8, T9",
+    "T8-10": "T8, T9, T10",
+    "T8-11": "T8, T9, T10, T11",
+    "T8-12": "T8, T9, T10, T11, T12",
     "T8-L1": "T8, T9, T10, T11, T12, L1",
     "T8-L2": "T8, T9, T10, T11, T12, L1, L2",
     "T8-L3": "T8, T9, T10, T11, T12, L1, L2, L3",
@@ -380,6 +470,9 @@ SEGMENTE_DICT = {
     "T9-T10": "T9, T10",
     "T9-T11": "T9, T10, T11",
     "T9-T12": "T9, T10, T11, T12",
+    "T9-10": "T9, T10",
+    "T9-11": "T9, T10, T11",
+    "T9-12": "T9, T10, T11, T12",
     "T9-L1": "T9, T10, T11, T12, L1",
     "T9-L2": "T9, T10, T11, T12, L1, L2",
     "T9-L3": "T9, T10, T11, T12, L1, L2, L3",
@@ -392,6 +485,8 @@ SEGMENTE_DICT = {
 
     "T10-T11": "T10, T11",
     "T10-T12": "T10, T11, T12",
+    "T10-11": "T10, T11",
+    "T10-12": "T10, T11, T12",
     "T10-L1": "T10, T11, T12, L1",
     "T10-L2": "T10, T11, T12, L1, L2",
     "T10-L3": "T10, T11, T12, L1, L2, L3",
@@ -403,6 +498,7 @@ SEGMENTE_DICT = {
     "T10-I": "T10, T11, T12, L1, L2, L3, L4, L5, S1, S2, X, I",
 
     "T11-T12": "T11, T12",
+    "T11-12": "T11, T12",
     "T11-L1": "T11, T12, L1",
     "T11-L2": "T11, T12, L1, L2",
     "T11-L3": "T11, T12, L1, L2, L3",
@@ -427,6 +523,10 @@ SEGMENTE_DICT = {
     "L1-L3": "L1, L2, L3",
     "L1-L4": "L1, L2, L3, L4",
     "L1-L5": "L1, L2, L3, L4, L5",
+    "L1-2": "L1, L2",
+    "L1-3": "L1, L2, L3",
+    "L1-4": "L1, L2, L3, L4",
+    "L1-5": "L1, L2, L3, L4, L5",
     "L1-S1": "L1, L2, L3, L4, L5, S1",
     "L1-S2": "L1, L2, L3, L4, L5, S1, S2",
     "L1-X": "L1, L2, L3, L4, L5, S1, S2, X",
@@ -435,6 +535,9 @@ SEGMENTE_DICT = {
     "L2-L3": "L2, L3",
     "L2-L4": "L2, L3, L4",
     "L2-L5": "L2, L3, L4, L5",
+    "L2-3": "L2, L3",
+    "L2-4": "L2, L3, L4",
+    "L2-5": "L2, L3, L4, L5",
     "L2-S1": "L2, L3, L4, L5, S1",
     "L2-S2": "L2, L3, L4, L5, S1, S2",
     "L2-X": "L2, L3, L4, L5, S1, S2, X",
@@ -442,12 +545,15 @@ SEGMENTE_DICT = {
 
     "L3-L4": "L3, L4",
     "L3-L5": "L3, L4, L5",
+    "L3-4": "L3, L4",
+    "L3-5": "L3, L4, L5",
     "L3-S1": "L3, L4, L5, S1",
     "L3-S2": "L3, L4, L5, S1, S2",
     "L3-X": "L3, L4, L5, S1, S2, X",
     "L3-I": "L3, L4, L5, S1, S2, X, I",
 
     "L4-L5": "L4, L5",
+    "L4-5": "L4, L5",
     "L4-S1": "L4, L5, S1",
     "L4-S2": "L4, L5, S1, S2",
     "L4-X": "L4, L5, S1, S2, X",
@@ -459,14 +565,47 @@ SEGMENTE_DICT = {
     "L5-I": "L5, S1, S2, X, I",
 
     "S1-S2": "S1, S2",
+    "S1-2": "S1, S2",
     "S1-X": "S1, S2, X",
     "S1-I": "S1, S2, X, I",
 
-    "S2-X": "S2, X",
+    "S2-sX": "S2, X",
     "S2-I": "S2, X, I",
 
     "X-I": "X, I"
 
+}
+
+SEGMENTE_DWG_DICT = {
+"CO ":"1",
+"C1 ":"2",
+"C2 ":"3",
+"C3 ":"4",
+"C4 ":"5",
+"C5 ":"6",
+"C6 ":"7",
+"C7 ":"8",
+"T1 ":"9",
+"T2 ":"10",
+"T3 ":"11",
+"T4 ":"12",
+"T5 ":"13",
+"T6 ":"14",
+"T7 ":"15",
+"T8 ":"16",
+"T9 ":"17",
+"T10 ":"18",
+"T11 ":"19",
+"T12 ":"20",
+"L1 ":"21",
+"L2 ":"22",
+"L3 ":"23",
+"L4 ":"24",
+"L5 ":"25",
+"S1 ":"26",
+"S2 ":"27",
+"X ":"28",
+"I ":"29"
 }
 
 def searchDict(dicti, searchFor):
@@ -512,8 +651,48 @@ def detectLevels(input):
     adaptedString = adaptedString.replace("OKZIPUT", "C0")
     adaptedString = adaptedString.replace("OCCIPUT", "C0")
     adaptedString = adaptedString.replace("OCC", "C0")
+    adaptedString = adaptedString.replace("OCC", "C0")
     adaptedString = adaptedString.replace("ILEUM", "I")
+    adaptedString = adaptedString.replace("COCCYX", "X")
+    adaptedString = adaptedString.replace("STEIßBEIN", "X")
+    adaptedString = adaptedString.replace("SAKRUM", "S2")
+    adaptedString = adaptedString.replace("SACRUM", "S2")
 
+    adaptedString2 = adaptedString.replace(",", " ")
+
+# remove unneccessary chars and spaces
+    while adaptedString2 != adaptedString:
+        adaptedString = adaptedString2
+        adaptedString2 = adaptedString.replace("  ", " ")
+    # after all replacements, adaptedString is equal to adaptedString2
+
+    adaptedString2 = ''
+    while adaptedString2 != adaptedString:
+        adaptedString2 = adaptedString.replace("- ", "-")
+        adaptedString = adaptedString2
+
+    adaptedString2 = ''
+    while adaptedString2 != adaptedString:
+        adaptedString2 = adaptedString.replace(" -", "-")
+        adaptedString = adaptedString2
+
+# use DICT to replace from to segments with a list (i.e. C2-5 -> C2, C3, C4, C5)
+    for abkuerzung in SEGMENTE_DICT:
+        adaptedString = adaptedString.replace(abkuerzung,SEGMENTE_DICT[abkuerzung])
+
+    adaptedString = adaptedString.replace(", ", " ")
+    adaptedString = adaptedString.replace(" ,", " ")
+    adaptedString = adaptedString.replace(",", " ")
+    adaptedString = adaptedString + " "
+# this is because of T10-12, we need to check that T1 is not added to the soup
+
+# generate final list
+    resultlist = []
+    for segment in SEGMENTE_DWG_DICT:
+        if segment in adaptedString:
+            resultlist.append(SEGMENTE_DWG_DICT[segment])
+
+    return resultlist
 
 def memdocLogin():
     params={'username': 'UniDre', 'password': 'UniDrePass1'}
@@ -593,14 +772,17 @@ def addForm(PID, IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, token):
 # main
 
 diagnosis = "BSV"
-levelsDg = "HWK3-4,HWK6-BWK7"
+levelsDg = "HWk1,C3 -4  , HWK6- t1"
 IV_PATHOLOGY_QUESTION=detectPathology(diagnosis)
 if IV_PATHOLOGY_QUESTION == 1:
     DEGENERATIVE_DISEASE_PRIM=detectPathologyDegenerative(diagnosis)
 else:
     DEGENERATIVE_DISEASE_PRIM=""
 
-token=memdocLogin()
-print(createPatient("818181", "01.01.1981", "f", token))
-print(addForm("818181", IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, token))
-print(memdocLogout(token))
+AFFECTED_SEGMENTS2 = detectLevels(levelsDg)
+print(AFFECTED_SEGMENTS2)
+
+# token=memdocLogin()
+# print(createPatient("818181", "01.01.1981", "f", token))
+# print(addForm("818181", IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, token))
+# print(memdocLogout(token))

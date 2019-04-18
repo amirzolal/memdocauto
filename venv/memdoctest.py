@@ -717,7 +717,8 @@ def createPatient(PID,gebDatum,geschlecht,token):
     r3 = requests.post(createpatienturl, json=patientdata)
     return r3
 
-def addForm(PID, IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, token):
+
+def addForm(PID, IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, AFFECTED_SEGMENTS2, token):
     DWGPRIMFORM1={
         "name": "DWG_PRIM_2017",
         "version":"V2",
@@ -736,6 +737,10 @@ def addForm(PID, IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, token):
         {
             "questionname": "DEGENERATIVE_DISEASE_PRIM",
             "values": [DEGENERATIVE_DISEASE_PRIM]
+        },
+        {
+            "questionname": "AFFECTED_SEGMENTS2",
+            "values": AFFECTED_SEGMENTS2
         }
     ]
     }
@@ -755,6 +760,10 @@ def addForm(PID, IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, token):
             "questionname":"IV_PATHOLOGY_QUESTION",
             "values": [IV_PATHOLOGY_QUESTION]
         },
+        {
+            "questionname": "AFFECTED_SEGMENTS2",
+            "values": AFFECTED_SEGMENTS2
+        }
     ]
     }
 
@@ -764,25 +773,27 @@ def addForm(PID, IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, token):
 
     if DEGENERATIVE_DISEASE_PRIM:
         r = requests.post(createformurl, json=DWGPRIMFORM1)
+        print(DWGPRIMFORM1)
     else:
         r = requests.post(createformurl, json=DWGPRIMFORM2)
+        print(DWGPRIMFORM2)
     return r
 
 
 # main
 
 diagnosis = "BSV"
-levelsDg = "HWk1,C3 -4  , HWK6- t1"
+affectedSegments = "HWk1,C3 -4  , HWK6- t1"
+
 IV_PATHOLOGY_QUESTION=detectPathology(diagnosis)
 if IV_PATHOLOGY_QUESTION == 1:
     DEGENERATIVE_DISEASE_PRIM=detectPathologyDegenerative(diagnosis)
 else:
     DEGENERATIVE_DISEASE_PRIM=""
 
-AFFECTED_SEGMENTS2 = detectLevels(levelsDg)
-print(AFFECTED_SEGMENTS2)
+AFFECTED_SEGMENTS2 = detectLevels(affectedSegments)
 
-# token=memdocLogin()
-# print(createPatient("818181", "01.01.1981", "f", token))
-# print(addForm("818181", IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, token))
-# print(memdocLogout(token))
+token=memdocLogin()
+print(createPatient("818183", "01.01.1981", "f", token))
+print(addForm("818183", IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, AFFECTED_SEGMENTS2, token))
+print(memdocLogout(token))

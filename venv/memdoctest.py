@@ -1,10 +1,12 @@
 import requests
 import json
+import csv
+
 
 IV_PATHOLOGY_QUESTION_DICT = {
 
-1:["DEGENERATIVE ERKRANKUNG", "DEGENERATION","OSTEOCHONDROSE","SPONDYLARTHROSE","BSV","BANDSACHEIBENVORFALL","VORFALL","SKS","SPINALKANALSTENOSE","NPP","PROLAPS","RECESSUSSTENOSE","ZYSTE","SYNOVIALE ZYSTE","JUXTAARTIKULÄRE ZYSTE","BS-HERNIE","DISKUSPROLAPS","DISKHERNIATION","REZESSUSSTENOSE","FORAMENSTENOSE","FORAMINALE", "SAGITTALE DYSBALANCE","SAGITTALE","HYPERKYPHOSE","SKOLIOSE","MYELOPATHIE", "FACETTENGELENKARTHROSE","FACETTENGELENKZYSTE","ISG"],
-2:["DEFORMITÄT (NICHT-DEGENERATIV)","MB. SCHEUERMANN","MORBUS SCHEUERMANN","SCHEUERMANN", "SCHEUERMANNKRANKHEIT","JUVENILE KYPHOSE","JUVENILE SKOLIOSE","ADOLESCENTE KYPHOSE", "ADOLESCENTE SKOLIOSE", "IDIOPATHISCHE SKOLIOSE", "IDIOPATHISCHE KYPHOSE", "KAMPTOKORMIE", "KAMPTOKORMIA"],
+1:["DEGENERATIVE ERKRANKUNG", "DEGENERATION","OSTEOCHONDROSE","SPONDYLARTHROSE","BSV","BANDSACHEIBENVORFALL","VORFALL","SKS","SPINALKANALSTENOSE","NPP","PROLAPS","RECESSUSSTENOSE","ZYSTE","SYNOVIALE ZYSTE","JUXTAARTIKULÄRE ZYSTE","BS-HERNIE","DISKUSPROLAPS","DISKHERNIATION","REZESSUSSTENOSE","FORAMENSTENOSE","FORAMINALE","MYELOPATHIE", "FACETTENGELENKARTHROSE","FACETTENGELENKZYSTE","ISG"],
+2:["DEFORMITÄT (NICHT-DEGENERATIV)","MB. SCHEUERMANN","MORBUS SCHEUERMANN","SCHEUERMANN", "SCHEUERMANNKRANKHEIT","JUVENILE KYPHOSE","JUVENILE SKOLIOSE","ADOLESCENTE KYPHOSE", "ADOLESCENTE SKOLIOSE", "IDIOPATHISCHE SKOLIOSE", "IDIOPATHISCHE KYPHOSE", "KAMPTOKORMIE", "KAMPTOKORMIA", "SAGITTALE DYSBALANCE","SAGITTALE","HYPERKYPHOSE","SKOLIOSE"],
 3:["FRAKTUR","KOMPRESSIONSFRAKTUR","WIRBELBRUCH","BRUCH"],
 4:["PATHOLOGISCHE FRAKTUR","TUMORFRAKTUR","PATHOL. FRAKUR", "PATH. FRAKUR"],
 5:["DYSPLASTISCHE SPONDYLOLISTHESES"],
@@ -32,6 +34,36 @@ DEGENERATIVE_DISEASE_PRIM_DICT = {
 12:["ISG","ISG ARTHROSE", "ISG SCHMERZEN", "ISG SCHMERZSYNDROM" ]
 
 }
+
+DEFORMITY_DICT = {
+
+1:["SKOLIOSE","SKOLIOSIS"],
+2:["KYPHOSE","KYFOSE","KYPHOSIS","KYFOSIS"],
+3:["CORONARE","FRONTALE"],
+4:["SAGITTALE"]
+
+}
+
+OSTEOPOROTIC_FRACTURE_CLASS_DICT = {
+    1:"OF1",
+    2:"OF2",
+    3:"OF3",
+    4:"OF4",
+    5:"OF5"
+}
+
+AO_FRACT_TYPE_DICT = {
+    1:"A0",
+    2:"A1",
+    3:"A2",
+    4:"A3",
+    5:"A4",
+    6:"B1",
+    7:"B2",
+    8:"B3",
+    9:"C"
+}
+
 
 SEGMENTE_DICT = {
     "C0-C1": "C0, C1",
@@ -615,6 +647,15 @@ def searchDict(dicti, searchFor):
                 return k
     return None
 
+def searchDictWord(dicti, searchFor):
+    searchList = searchFor.split()
+    for k in dicti:
+        for v in dicti[k]:
+            for word in searchList:
+                if word.upper() in v:
+                    return k
+    return None
+
 def detectPathology(input):
     adaptedString = input
     adaptedString.replace("", "")
@@ -634,6 +675,17 @@ def detectPathologyDegenerative(input):
         return 10
     else:
         return result
+
+def detectPathologyDeformity(input):
+    adaptedString = input
+    adaptedString.replace("", "")
+    adaptedString = adaptedString.upper()
+    result = searchDictWord(DEFORMITY_DICT, adaptedString)
+    if result == None:
+        return 5
+    else:
+        return result
+
 
 def detectLevels(input):
     adaptedString = input
@@ -782,18 +834,59 @@ def addForm(PID, IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, AFFECTED_SEGM
 
 # main
 
-diagnosis = "BSV"
-affectedSegments = "HWk1,C3 -4  , HWK6- t1"
+#login to memDoc and get the token
+#token=memdocLogin()
 
-IV_PATHOLOGY_QUESTION=detectPathology(diagnosis)
-if IV_PATHOLOGY_QUESTION == 1:
-    DEGENERATIVE_DISEASE_PRIM=detectPathologyDegenerative(diagnosis)
-else:
-    DEGENERATIVE_DISEASE_PRIM=""
 
-AFFECTED_SEGMENTS2 = detectLevels(affectedSegments)
+csvFile = open('/home/zolal/democlient/testdata.csv', 'r')
+reader = csv.reader(csvFile)
 
-token=memdocLogin()
-print(createPatient("818183", "01.01.1981", "f", token))
-print(addForm("818183", IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, AFFECTED_SEGMENTS2, token))
-print(memdocLogout(token))
+for row in reader:
+    if row[0] != "PID":
+        PID = row[0]
+        DOB = row[1]
+        sex = row[2]
+        OPDatum = row[3]
+        ASA = row[4]
+        diagnosis = row[5]
+        classification = row[6]
+        affectedSegments = row[7]
+        decompressionSegments = row[8]
+        fusionSegments = row[9]
+        stabilisationSegments = row[10]
+        correctionSegments = row[11]
+        dynamicSegments = row[12]
+        otherSegments = row[13]
+        IV_PATHOLOGY_QUESTION=detectPathology(diagnosis)
+        if IV_PATHOLOGY_QUESTION == 1:
+            DEGENERATIVE_DISEASE_PRIM = detectPathologyDegenerative(diagnosis)
+            DEFORMITY=""
+        elif IV_PATHOLOGY_QUESTION == 2:
+            DEFORMITY = detectPathologyDeformity(diagnosis)
+            DEGENERATIVE_DISEASE_PRIM = ""
+        else:
+            DEGENERATIVE_DISEASE_PRIM=""
+            DEFORMITY = ""
+
+        AFFECTED_SEGMENTS2 = detectLevels(affectedSegments)
+        DECOMP_EXTEND = detectLevels(decompressionSegments)
+        FUSION_EXTEND = detectLevels(fusionSegments)
+        STABILIZATION_R_EXTEND = detectLevels(stabilisationSegments)
+        DEFORMITY_CORR_EXTEND = detectLevels(correctionSegments)
+        SPEC_STABILIZATION_M_EXTEND = detectLevels(dynamicSegments)
+
+        print(PID)
+        print(OPDatum)
+        print(ASA)
+        print(IV_PATHOLOGY_QUESTION)
+        print(DEFORMITY)
+        print(DEGENERATIVE_DISEASE_PRIM)
+        print(AFFECTED_SEGMENTS2)
+        print(DECOMP_EXTEND)
+        print(FUSION_EXTEND)
+
+
+
+        #print(createPatient(PID, DOB, sex, token))
+        #$print(addForm(PID, IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, AFFECTED_SEGMENTS2, token))
+        #print(memdocLogout(token))

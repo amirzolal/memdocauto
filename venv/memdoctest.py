@@ -1,6 +1,7 @@
 import requests
 import json
 import csv
+import datetime
 
 
 IV_PATHOLOGY_QUESTION_DICT = {
@@ -762,7 +763,7 @@ def createPatient(PID,gebDatum,geschlecht,token):
     patientdata={
         "mrn": PID,
         "dob": gebDatum,
-        "gender": geschlecht
+        "gender": geschlecht.lower()
     }
     createpatientstring: str = "https://memdocdemo.memdoc.org/memdocRestServer/rest/demo/depts/{}/patientform?token={}"
     createpatienturl: str = createpatientstring.format(124, token)
@@ -770,7 +771,7 @@ def createPatient(PID,gebDatum,geschlecht,token):
     return r3
 
 
-def addForm(PID, IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, AFFECTED_SEGMENTS2, token):
+def addForm(PID, IV_PATHOLOGY_QUESTION, IV_DATE_QUESTION, MORBIDITY, DEGENERATIVE_DISEASE_PRIM, AFFECTED_SEGMENTS2, DECOMP_EXTEND, FUSION_EXTEND, STABILIZATION_R_EXTEND, DEFORMITY_CORR_EXTEND, MEASURE_OTHER_EXTEND, token):
     DWGPRIMFORM1={
         "name": "DWG_PRIM_2017",
         "version":"V2",
@@ -787,55 +788,57 @@ def addForm(PID, IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, AFFECTED_SEGM
             "values": [IV_PATHOLOGY_QUESTION]
         },
         {
+            "questionname": "IV_DATE_QUESTION",
+            "values": [IV_DATE_QUESTION]
+        },
+        {
+            "questionname": "MORBIDITY",
+            "values": [MORBIDITY]
+        },
+        {
             "questionname": "DEGENERATIVE_DISEASE_PRIM",
             "values": [DEGENERATIVE_DISEASE_PRIM]
         },
         {
             "questionname": "AFFECTED_SEGMENTS2",
             "values": AFFECTED_SEGMENTS2
+        },
+        {
+            "questionname": "DECOMP_EXTEND",
+            "values": DECOMP_EXTEND
+        },
+        {
+            "questionname": "FUSION_EXTEND",
+            "values": FUSION_EXTEND
+        },
+        {
+            "questionname": "STABILIZATION_R_EXTEND",
+            "values": STABILIZATION_R_EXTEND
+        },
+        {
+            "questionname": "DEFORMITY_CORR_EXTEND",
+            "values": DEFORMITY_CORR_EXTEND
+        },
+        {
+            "questionname": "MEASURE_OTHER_EXTEND",
+            "values": MEASURE_OTHER_EXTEND
         }
     ]
     }
 
-    DWGPRIMFORM2={
-        "name": "DWG_PRIM_2017",
-        "version":"V2",
-        "subversion":"0",
-        "formcreatedby":"UniDre",
-        "formlanguage":"de",
-        "answers": [
-        {
-            "questionname": "SSE_FORMAT",
-            "values": ["1"]
-        },
-        {
-            "questionname":"IV_PATHOLOGY_QUESTION",
-            "values": [IV_PATHOLOGY_QUESTION]
-        },
-        {
-            "questionname": "AFFECTED_SEGMENTS2",
-            "values": AFFECTED_SEGMENTS2
-        }
-    ]
-    }
 
 
     createformstring: str = "https://memdocdemo.memdoc.org/memdocRestServer/rest/demo/depts/{}/patients/{}/forms?token={}&saveinc=true&autosubmit=true"
     createformurl: str = createformstring.format(124, PID, token)
 
-    if DEGENERATIVE_DISEASE_PRIM:
-        r = requests.post(createformurl, json=DWGPRIMFORM1)
-        print(DWGPRIMFORM1)
-    else:
-        r = requests.post(createformurl, json=DWGPRIMFORM2)
-        print(DWGPRIMFORM2)
+    r = requests.post(createformurl, json=DWGPRIMFORM1)
     return r
 
 
 # main
 
-#login to memDoc and get the token
-#token=memdocLogin()
+# login to memDoc and get the token
+token=memdocLogin()
 
 
 csvFile = open('/home/zolal/democlient/testdata.csv', 'r')
@@ -846,8 +849,8 @@ for row in reader:
         PID = row[0]
         DOB = row[1]
         sex = row[2]
-        OPDatum = row[3]
-        ASA = row[4]
+        IV_DATE_QUESTION = row[3]  # OP Datum
+        MORBIDITY = row[4]  # ASA
         diagnosis = row[5]
         classification = row[6]
         affectedSegments = row[7]
@@ -874,10 +877,11 @@ for row in reader:
         STABILIZATION_R_EXTEND = detectLevels(stabilisationSegments)
         DEFORMITY_CORR_EXTEND = detectLevels(correctionSegments)
         SPEC_STABILIZATION_M_EXTEND = detectLevels(dynamicSegments)
-
+        MEASURE_OTHER_EXTEND = detectLevels(otherSegments)
+        # DECOMP_EXTEND, FUSION_EXTEND, STABILIZATION_R_EXTEND, DEFORMITY_CORR_EXTEND, MEASURE_OTHER_EXTEND
         print(PID)
-        print(OPDatum)
-        print(ASA)
+        print(IV_DATE_QUESTION)
+        print(MORBIDITY)
         print(IV_PATHOLOGY_QUESTION)
         print(DEFORMITY)
         print(DEGENERATIVE_DISEASE_PRIM)
@@ -887,6 +891,8 @@ for row in reader:
 
 
 
-        #print(createPatient(PID, DOB, sex, token))
-        #$print(addForm(PID, IV_PATHOLOGY_QUESTION, DEGENERATIVE_DISEASE_PRIM, AFFECTED_SEGMENTS2, token))
-        #print(memdocLogout(token))
+        print(createPatient(PID, DOB, sex, token))
+        print(addForm(PID, IV_PATHOLOGY_QUESTION, IV_DATE_QUESTION, MORBIDITY, DEGENERATIVE_DISEASE_PRIM, AFFECTED_SEGMENTS2, DECOMP_EXTEND, FUSION_EXTEND, STABILIZATION_R_EXTEND, DEFORMITY_CORR_EXTEND, MEASURE_OTHER_EXTEND, token))
+
+
+print(memdocLogout(token))
